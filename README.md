@@ -1,1 +1,1 @@
-# learn-terraform
+# Terraform Azure Template - Basic
