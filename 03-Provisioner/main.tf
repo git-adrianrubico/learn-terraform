@@ -18,32 +18,6 @@ resource "azurerm_storage_account" "sa-example" {
   }
 }
 
-resource "azurerm_virtual_network" "vnet-example" {
-  name                = "example-network"
-  address_space       = ["10.0.0.0/16"]
-  location            = azurerm_resource_group.rg-example.location
-  resource_group_name = azurerm_resource_group.rg-example.name
-}
-
-resource "azurerm_subnet" "subnet-example" {
-  name                 = "internal"
-  resource_group_name  = azurerm_resource_group.rg-example.name
-  virtual_network_name = azurerm_virtual_network.vnet-example.name
-  address_prefixes     = ["10.0.2.0/24"]
-}
-
-resource "azurerm_network_interface" "nic-example" {
-  name                = "example-nic"
-  location            = azurerm_resource_group.rg-example.location
-  resource_group_name = azurerm_resource_group.rg-example.name
-
-  ip_configuration {
-    name                          = "internal"
-    subnet_id                     = azurerm_subnet.subnet-example.id
-    private_ip_address_allocation = "Dynamic"
-  }
-}
-
 resource "azurerm_linux_virtual_machine" "vm-example" {
   name                            = var.azvm
   resource_group_name             = azurerm_resource_group.rg-example.name
@@ -71,5 +45,31 @@ resource "azurerm_linux_virtual_machine" "vm-example" {
 
   tags = {
     environment = local.env
+  }
+}
+
+resource "azurerm_virtual_network" "vnet-example" {
+  name                = "example-network"
+  address_space       = ["10.0.0.0/16"]
+  location            = azurerm_resource_group.rg-example.location
+  resource_group_name = azurerm_resource_group.rg-example.name
+}
+
+resource "azurerm_subnet" "subnet-example" {
+  name                 = "internal"
+  resource_group_name  = azurerm_resource_group.rg-example.name
+  virtual_network_name = azurerm_virtual_network.vnet-example.name
+  address_prefixes     = ["10.0.2.0/24"]
+}
+
+resource "azurerm_network_interface" "nic-example" {
+  name                = "example-nic"
+  location            = azurerm_resource_group.rg-example.location
+  resource_group_name = azurerm_resource_group.rg-example.name
+
+  ip_configuration {
+    name                          = "internal"
+    subnet_id                     = azurerm_subnet.subnet-example.id
+    private_ip_address_allocation = "Dynamic"
   }
 }
