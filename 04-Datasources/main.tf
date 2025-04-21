@@ -5,6 +5,6 @@ resource "azurerm_storage_account" "sa-example" {
   account_tier             = "Standard"
   account_replication_type = "GRS"
   tags = {
-    environment = "dev"
+    environment = azurerm_resource_group.rg-example.location
   }
 }
