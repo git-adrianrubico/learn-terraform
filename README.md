@@ -1,5 +1,5 @@
 # Learn Terraform with Azure 
-Welcome to the Learn Terraform repository — a hands-on companion to my blog series at [blog.adrianrubico.com](https://blog.adrianrubico.com). This repository is designed to help you follow along with the Terraform examples and workflows covered in each post.
+Welcome to the Learn Terraform repository — a hands-on companion to my blog series at [blog.adrianrubico.com](https://blog.adrianrubico.com/tag/learn-terraform/). This repository is designed to help you follow along with the Terraform examples and workflows covered in each post.
 
 # 🌱 Purpose
 
@@ -55,7 +55,7 @@ Each directory aligns with a blog post:
 
 📖 Visit the blog: blog.adrianrubico.com
 
-🔖 Look for the Terraform category or #90DaysDevOps tag
+🔖 Look for the learn-terraform tag
 
 ✅ Apply the examples locally while reading the post
 
