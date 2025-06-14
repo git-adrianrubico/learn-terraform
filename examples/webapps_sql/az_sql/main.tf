@@ -15,3 +15,12 @@ resource "azurerm_mssql_database" "db" {
   sku_name       = "S0"
   zone_redundant = false
 }
+
+resource "azurerm_mssql_firewall_rule" "allow_azure_services" {
+  name             = "AllowAzure"
+  server_id        = azurerm_mssql_server.sql.id
+  start_ip_address = "0.0.0.0"
+  end_ip_address   = "0.0.0.0"
+
+  depends_on = [azurerm_mssql_server.sql]
+}
